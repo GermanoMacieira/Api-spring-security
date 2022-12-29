@@ -18,6 +18,7 @@ public class StudentController {
     // LISTAR TODOS:
     @GetMapping(value="/listall")
     List<Student> listStudents() {
+
         return this.studentService.listStudents();
     }
 }
