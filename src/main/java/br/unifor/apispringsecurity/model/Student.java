@@ -1,3 +1,4 @@
+
 package br.unifor.apispringsecurity.model;
 
 import jakarta.persistence.Entity;
@@ -8,11 +9,15 @@ import jakarta.persistence.Id;
 @Entity
 public class Student {
     // ATRIBUTOS:
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id     // Anotação que indica que o atributo será a chave primária da tabela;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)     // Anotação que indica o auto incremento do id na tabela do banco de dados;
     private Long idStudent;
-    // @NotEmpty(message = "Nome do estudante é obrigatório!")
-    private String nomeStudent;
+
+    // NotNull: Não permite valor nulo.
+    // NotEmpty: Não permite valor nulo ou vazio
+    // NotBlank: Não permite valor nulo, nem vazio, após remover os espaços nas extremidades da String com trim.
+    // @NotBlank(message = "Nome do estudante é obrigatório!")
+    private String nameStudent;
     private String emailStudent;
 
     // CONSTRUTOR:
@@ -20,10 +25,14 @@ public class Student {
     public Student() {
     }
 
-    public Student(Long isStudent, String nomeStudent, String emailStudent) {
-        this.idStudent = isStudent;
-        this.nomeStudent = nomeStudent;
+    public Student(Long idStudent, String nameStudent, String emailStudent) {
+        this.idStudent = idStudent;
+        this.nameStudent = nameStudent;
         this.emailStudent = emailStudent;
+    }
+
+    public Student(Student student) {
+
     }
     // GETTER-SETTER:
 
@@ -35,12 +44,12 @@ public class Student {
         this.idStudent = idStudent;
     }
 
-    public String getNomeStudent() {
-        return nomeStudent;
+    public String getNameStudent() {
+        return nameStudent;
     }
 
-    public void setNomeStudent(String nomeStudent) {
-        this.nomeStudent = nomeStudent;
+    public void setNameStudent(String nameStudent) {
+        this.nameStudent = nameStudent;
     }
 
     public String getEmailStudent() {
